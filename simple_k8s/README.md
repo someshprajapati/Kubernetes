@@ -4,7 +4,7 @@ S😎MESH~[Kubernetes]-$ cd simple_k8s/
 
 S😎MESH~[simple_k8s]-$ code .
 
-## Verify the kubectl is installed and working using cluster-info command
+## Verify the `kubectl` is installed and working using `cluster-info` command
 S😎MESH~[simple_k8s]-$ **kubectl cluster-info**
 ```
 Kubernetes master is running at https://kubernetes.docker.internal:6443
