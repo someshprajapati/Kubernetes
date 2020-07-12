@@ -27,7 +27,7 @@ spec:
       - name: client
         image: someshprajapati/multi-client
         ports:
-            - containerPort: 9000
+            - containerPort: 3000
 ```
 
 ## Apply the configuration to create pod
@@ -68,7 +68,7 @@ spec:
       - name: client
         image: someshprajapati/multi-worker
         ports:
-            - containerPort: 9000
+            - containerPort: 3000
 ```
 
 ## Apply the new configuration to create pod
@@ -193,29 +193,27 @@ The Pod "client-pod" is invalid: spec: Forbidden: pod updates may not change fie
 
 ## Basic deployment file which uses the multi-client image from docker hub
 S😎MESH~[simple_k8s]-$ **cat client-deployment.yaml**
-───────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-       │ File: client-deployment.yaml
-───────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-   1   │ apiVersion: apps/v1
-   2   │ kind: Deployment
-   3   │ metadata:
-   4   │     name: client-deployment
-   5   │ spec:
-   6   │     replicas: 1
-   7   │     selector:
-   8   │         matchLabels:
-   9   │             component: web
-  10   │     template:
-  11   │         metadata:
-  12   │             labels:
-  13   │                 component: web
-  14   │         spec:
-  15   │             containers:
-  16   │               - name: client
-  17   │                 image: someshprajapati/multi-client
-  18   │                 ports:
-  19   │                     - containerPort: 3000
-───────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: client-deployment
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            component: web
+    template:
+        metadata:
+            labels:
+                component: web
+        spec:
+            containers:
+              - name: client
+                image: someshprajapati/multi-client
+                ports:
+                    - containerPort: 3000
+```
 
 ## Apply the deployment
 S😎MESH~[simple_k8s]-$ **kubectl apply -f client-deployment.yaml**
@@ -341,29 +339,27 @@ latest: digest: sha256:d5c306096334b836944a05e0a351bd0fa0bc195333fc7187119467c2f
 
 ## client-deployment with new image multi-client-k8s
 S😎MESH~[simple_k8s]-$ **cat client-deployment.yaml**
-───────┬───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-       │ File: client-deployment.yaml
-───────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-   1   │ apiVersion: apps/v1
-   2   │ kind: Deployment
-   3   │ metadata:
-   4   │     name: client-deployment
-   5   │ spec:
-   6   │     replicas: 1
-   7   │     selector:
-   8   │         matchLabels:
-   9   │             component: web
-  10   │     template:
-  11   │         metadata:
-  12   │             labels:
-  13   │                 component: web
-  14   │         spec:
-  15   │             containers:
-  16   │               - name: client
-  17   │                 image: someshprajapati/multi-client-k8s
-  18   │                 ports:
-  19   │                     - containerPort: 3000
-───────┴───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: client-deployment
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            component: web
+    template:
+        metadata:
+            labels:
+                component: web
+        spec:
+            containers:
+              - name: client
+                image: someshprajapati/multi-client-k8s
+                ports:
+                    - containerPort: 3000
+```
 
 ## Update the pod with the new image at runtime
 S😎MESH~[simple_k8s]-$ **kubectl set image deployment/client-deployment client=someshprajapati/multi-client-k8s**
