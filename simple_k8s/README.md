@@ -273,6 +273,7 @@ drwxr-xr-x  12 someshprajapati  staff    384 Jul 12 13:12 client
 ```
 
 S😎MESH~[simple_k8s]-$ **cd client**
+
 S😎MESH~[client]-$ **ls -l**
 ```
 -rw-r--r--   1 someshprajapati  staff     330 Jul 12 13:12 Dockerfile
