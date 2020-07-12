@@ -13,7 +13,7 @@ KubeDNS is running at https://kubernetes.docker.internal:6443/api/v1/namespaces/
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
 
-## Basic client pod file which uses the multi-client image from docker hub
+## Basic client pod file which uses the `multi-client` image from docker hub
 S😎MESH~[simple_k8s]-$ **cat client-pod.yaml**
 ```
 apiVersion: v1
@@ -53,8 +53,8 @@ client-node-port   NodePort    10.103.45.64   <none>        3050:31515/TCP   2m3
 kubernetes         ClusterIP   10.96.0.1      <none>        443/TCP          27d
 ```
 
-## Basic client pod file which uses the multi-worker image from docker hub
-#### Updated the image from multi-client to multi-worker
+## Basic client pod file which uses the `multi-worker` image from docker hub
+#### Updated the image from `multi-client` to `multi-worker`
 S😎MESH~[simple_k8s]-$ **cat client-pod.yaml**
 ```
 apiVersion: v1
@@ -139,7 +139,7 @@ Events:
   Normal  Started  2m27s (x2 over 15h)  kubelet, docker-desktop  Started container client
 ```
 
-## Updated the containerPort from 3000 to 9000
+## Updated the containerPort from `3000` to `9000`
 S😎MESH~[simple_k8s]-$ **cat client-pod.yaml**
 ```
 apiVersion: v1
@@ -191,7 +191,7 @@ The Pod "client-pod" is invalid: spec: Forbidden: pod updates may not change fie
   }
 ```
 
-## Basic deployment file which uses the multi-client image from docker hub
+## Basic deployment file which uses the `multi-client` image from docker hub
 S😎MESH~[simple_k8s]-$ **cat client-deployment.yaml**
 ```
 apiVersion: apps/v1
@@ -272,7 +272,7 @@ drwxr-xr-x   5 someshprajapati  staff     160 Jul 12 13:12 public
 drwxr-xr-x  11 someshprajapati  staff     352 Jul 12 13:12 src
 ```
 
-## Create the new multi-client-k8s image 
+## Create the new `multi-client-k8s` image 
 S😎MESH~[client]-$ **docker build -t someshprajapati/multi-client-k8s .**
 ```
 Sending build context to Docker daemon  163.8kB
@@ -323,7 +323,7 @@ Successfully built 4611c4c29eb3
 Successfully tagged someshprajapati/multi-client-k8s:latest
 ```
 
-## Push the new multi-client-k8s image to docker hub
+## Push the new `multi-client-k8s` image to docker hub
 S😎MESH~[client]-$ **docker push someshprajapati/multi-client-k8s**
 ```
 The push refers to repository [docker.io/someshprajapati/multi-client-k8s]
@@ -337,7 +337,7 @@ dabde873ef87: Pushed
 latest: digest: sha256:d5c306096334b836944a05e0a351bd0fa0bc195333fc7187119467c2ffc4d577 size: 1779
 ```
 
-## client-deployment with new image multi-client-k8s
+## client-deployment with new image `multi-client-k8s`
 S😎MESH~[simple_k8s]-$ **cat client-deployment.yaml**
 ```
 apiVersion: apps/v1
