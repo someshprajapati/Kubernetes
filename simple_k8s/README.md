@@ -32,11 +32,15 @@ spec:
 
 ## Apply the configuration to create pod
 S😎MESH~[simple_k8s]-$ **kubectl apply -f client-pod.yaml**
+```
 pod/client-pod created
+```
 
 ## Apply the configuration to create service
 S😎MESH~[simple_k8s]-$ **kubectl apply -f client-node-port.yaml**
+```
 service/client-node-port created
+```
 
 ## Get the running pod
 S😎MESH~[simple_k8s]-$ **kubectl get pods**
@@ -73,12 +77,16 @@ spec:
 
 ## Apply the new configuration to create pod
 S😎MESH~[simple_k8s]-$ **kubectl apply -f client-pod.yaml**
+```
 pod/client-pod configured
+```
 
 ## Get the running pod
 S😎MESH~[simple_k8s]-$ **kubectl get pods**
+```
 NAME         READY   STATUS    RESTARTS   AGE
 client-pod   1/1     Running   1          17h
+```
 
 ## Describe the pod details
 S😎MESH~[simple_k8s]-$ **kubectl describe pod client-pod**
@@ -217,7 +225,9 @@ spec:
 
 ## Apply the deployment
 S😎MESH~[simple_k8s]-$ **kubectl apply -f client-deployment.yaml**
+```
 deployment.apps/client-deployment created
+```
 
 ## Get the deployment
 S😎MESH~[simple_k8s]-$ **kubectl get deployments**
@@ -235,22 +245,26 @@ client-deployment-85c9c4447b-xgfkn   0/1     ContainerCreating   0          11s
 
 ## Get the pods again (running)
 S😎MESH~[simple_k8s]-$ **kubectl get pods**
+```
 NAME                                 READY   STATUS    RESTARTS   AGE
 client-deployment-85c9c4447b-xgfkn   1/1     Running   0          64s
+```
 
 ## Get the deployment again
 S😎MESH~[simple_k8s]-$ **kubectl get deployments**
+```
 NAME                READY   UP-TO-DATE   AVAILABLE   AGE
 client-deployment   1/1     1            1           96s
-
+```
 
 S😎MESH~[simple_k8s]-$ **kubectl get pods -o wide**
+```
 NAME                                 READY   STATUS    RESTARTS   AGE     IP          NODE             NOMINATED NODE   READINESS GATES
 client-deployment-85c9c4447b-xgfkn   1/1     Running   0          4m12s   10.1.0.52   docker-desktop   <none>           <none>
+```
 
 S😎MESH~[simple_k8s]-$ **ls -l**
 ```
-total 56
 -rw-r--r--   1 someshprajapati  staff  15063 Jul 12 12:49 README.md
 drwxr-xr-x  12 someshprajapati  staff    384 Jul 12 13:12 client
 -rw-r--r--   1 someshprajapati  staff    424 Jul 12 12:24 client-deployment.yaml
@@ -261,7 +275,6 @@ drwxr-xr-x  12 someshprajapati  staff    384 Jul 12 13:12 client
 S😎MESH~[simple_k8s]-$ **cd client**
 S😎MESH~[client]-$ **ls -l**
 ```
-total 264
 -rw-r--r--   1 someshprajapati  staff     330 Jul 12 13:12 Dockerfile
 -rw-r--r--   1 someshprajapati  staff     195 Jul 12 13:12 Dockerfile.dev
 -rw-r--r--   1 someshprajapati  staff  119451 Jul 12 13:12 README.md
@@ -363,7 +376,9 @@ spec:
 
 ## Update the pod with the new image at runtime
 S😎MESH~[simple_k8s]-$ **kubectl set image deployment/client-deployment client=someshprajapati/multi-client-k8s**
+```
 deployment.apps/client-deployment image updated
+```
 
 S😎MESH~[simple_k8s]-$ **kubectl get pods**
 ```
